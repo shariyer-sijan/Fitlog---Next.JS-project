@@ -1,8 +1,15 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
 import logo from "@/assets/logo.png"
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+
+
 const Navbar = () => {
+
+    const path = usePathname();
+
     return (
         <div className="container mx-auto">
             <div className="flex items-center justify-between px-6 py-3">
@@ -15,17 +22,16 @@ const Navbar = () => {
 
                 <div className="flex items-center justify-center">
                     <div role="tablist" className="tabs bg-black/40 p-1 rounded-full gap-1 border border-white/10">
-                        <Link href="/"
-                            role="tab"
-                            className="tab tab-active rounded-full text-sm font-semibold bg-lime-400 text-black shadow-md"
+                        <Link href="/" role="tab"
+                            className={path == "/" ? "tab tab-active rounded-full text-sm font-semibold bg-lime-400 text-black shadow-md" : "tab rounded-full text-sm font-semibold text-gray-400 hover:text-white"}
                         >
                             Workouts
                         </Link>
 
                         <Link
-                            href="/my-plan"
+                            href="/Show"
                             role="tab"
-                            className="tab rounded-full text-sm font-semibold text-gray-400 hover:text-white"
+                             className={path == "/Show" ? "tab tab-active rounded-full text-sm font-semibold bg-lime-400 text-black shadow-md" : "tab rounded-full text-sm font-semibold text-gray-400 hover:text-white"}
                         >
                             My Plan
                         </Link>

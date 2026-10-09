@@ -1,3 +1,4 @@
+"use client";
 import { Workout } from '@/context/Context';
 import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
