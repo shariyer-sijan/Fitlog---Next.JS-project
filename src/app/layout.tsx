@@ -4,8 +4,9 @@ import Navbar from "@/components/Navbar";
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Context from "@/context/Context";
 
-config.autoAddCss = false; 
+config.autoAddCss = false;
 
 import "./globals.css";
 const geistSans = Geist({
@@ -25,15 +26,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-    data-theme="black"
+      data-theme="black"
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased `}
     >
       <body className="min-h-full flex flex-col">
         <div className="mt-4"></div>
-    <Navbar/>
-     <div className="divider"></div>
-        {children}</body>
+        <Navbar />
+        <div className="divider"></div>
+
+        <Context>{children}</Context></body>
     </html>
   );
 }

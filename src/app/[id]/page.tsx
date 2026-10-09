@@ -1,29 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare, faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { Ipost } from '@/components/Ipost';
+import Plan from '@/components/Plan';
+import Save from '@/components/Save';
 
-// ১. API থেকে ID অনুযায়ী ডাটা নিয়ে আসার ফাংশন
-async function getWorkout(id: string): Promise<Ipost | null> {
-    try {
-        const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
-        if (!res.ok) return null;
-        
-        const data: Ipost[] = await res.json();
-        const item = data.find((workout) => String(workout.id) === String(id));
-        return item || null;
-    } catch (error) {
-        return null;
-    }
-}
 
-// Next.js পেজ কম্পোনেন্ট (params গ্রহণ করে)
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     const { id } = await params;
-    const post = await getWorkout(id);
+    const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
+    const post:Ipost= await res.json() ;
 
-    // ডাটা না পেলে বা লোড না হলে
+
     if (!post) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-[#0f1216] text-white">
@@ -36,7 +23,6 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className="max-w-6xl mx-auto p-6 bg-[#0f1216] text-white min-h-screen">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 
-                {/* Left Side: Large Image */}
                 <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl border border-gray-800">
                     <Image
                         src={post.image}
@@ -117,15 +103,8 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                     </div>
 
                     <div className="flex items-center gap-4 pt-2">
-                        <button className="flex items-center gap-2 bg-[#cfff04] text-black font-bold px-5 py-3 rounded-xl hover:bg-[#bce600] transition">
-                            <FontAwesomeIcon icon={faPlusSquare} className="w-4 h-4" />
-                            <span>Add to todays plan</span>
-                        </button>
-                        
-                        <button className="flex items-center gap-2 bg-[#181c23] border border-gray-700 text-gray-300 font-bold px-5 py-3 rounded-xl hover:bg-gray-800 transition">
-                            <FontAwesomeIcon icon={faBookmark} className="w-4 h-4" />
-                            <span>Save for later</span>
-                        </button>
+                        <Plan post={post}/> 
+                        <Save post={post}/>
                     </div>
 
                 </div>
