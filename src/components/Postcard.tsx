@@ -13,7 +13,7 @@ const Postcard = ({ post }: { post: Ipost }) => {
                 <Image
                     src={post.image}
                     alt={post.name}
-                    fill
+                    width={350} height={100}
                     className="object-cover"
                 />
             </div>

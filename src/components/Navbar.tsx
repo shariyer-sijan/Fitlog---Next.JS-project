@@ -31,9 +31,9 @@ return (
                     </Link>
 
                     <Link
-                        href="/Show"
+                        href="/list"
                         role="tab"
-                        className={path == "/Show" ? "tab tab-active rounded-full text-sm font-semibold bg-lime-400 text-black shadow-md" : "tab rounded-full text-sm font-semibold text-gray-400 hover:text-white"}
+                        className={path == "/list" ? "tab tab-active rounded-full text-sm font-semibold bg-lime-400 text-black shadow-md" : "tab rounded-full text-sm font-semibold text-gray-400 hover:text-white"}
                     >
                         My Plan
                     </Link>

@@ -8,7 +8,7 @@ import Save from '@/components/Save';
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     const { id } = await params;
     const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`);
-    const post:Ipost= await res.json() ;
+    const post: Ipost = await res.json();
 
 
     if (!post) {
@@ -18,19 +18,25 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             </div>
         );
     }
-
+    console.log("DYNAMIC ROUTE ID:", id);
     return (
         <div className="max-w-6xl mx-auto p-6 bg-[#0f1216] text-white min-h-screen">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                
+
                 <div className="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl border border-gray-800">
-                    <Image
-                        src={post.image}
-                        alt={post.name}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
+                    {post.image ? (
+                        <Image
+                            src={post.image}
+                            alt={post.name || "Workout Image"}
+                            width={650} height={450}
+                            className="object-cover"
+                            priority
+                        />
+                    ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gray-800 text-gray-400">
+                            No Image Available
+                        </div>
+                    )}
                 </div>
 
                 {/* Right Side: Information & Instructions */}
@@ -43,7 +49,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                         <p className="text-sm text-gray-400 mt-2 leading-relaxed">
                             {post.description}
                         </p>
-                        
+
                         {/* Muscle Badges */}
                         <div className="flex flex-wrap gap-2 mt-4">
                             {post.muscleGroups?.map((muscle, index) => (
@@ -103,8 +109,8 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                     </div>
 
                     <div className="flex items-center gap-4 pt-2">
-                        <Plan post={post}/> 
-                        <Save post={post}/>
+                        <Plan post={post} />
+                        <Save post={post} />
                     </div>
 
                 </div>
