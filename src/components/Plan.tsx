@@ -8,16 +8,22 @@ import { Ipost } from './Ipost';
 const Plan = ({post}:{post:Ipost}) => {
     const context = useContext(Workout);
     if (!context) return null;
-    const { setPlanList } = context;
-
+    const { planList,setPlanList } = context;
+    const ache =planList.some( (item)=> item.id===post.id)  ;
     const handle=() =>{
-        setPlanList( (prev)=>[...prev,post])
+        if(!ache){
+        setPlanList( (prev)=>[...prev,post]) ;
+        }
     }
-
+    
     return (
-        <button onClick={handle} className="flex items-center gap-2 bg-[#cfff04] text-black font-bold px-5 py-3 rounded-xl hover:bg-[#bce600] transition">
+        <button onClick={handle} disabled={ache} className={
+        ache
+            ? "flex items-center gap-2 bg-gray-500 text-white font-bold px-5 py-3 rounded-xl cursor-not-allowed"
+            : "flex items-center gap-2 bg-[#cfff04] text-black font-bold px-5 py-3 rounded-xl hover:bg-[#bce600] transition"
+    }>
             <FontAwesomeIcon icon={faPlusSquare} className="w-4 h-4" />
-            <span>Add to todays plan</span>
+            <span > {ache? "Added":"Add to todays plan"}</span>
         </button>
     );
 };
