@@ -32,10 +32,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <div className="mt-4"></div>
-        <Navbar />
-        <div className="divider"></div>
 
-        <Context>{children}</Context></body>
+
+
+        <Context>
+          <Navbar />
+          <div className="divider"></div>
+          {children}</Context></body>
     </html>
   );
 }
