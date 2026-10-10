@@ -18,7 +18,6 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             </div>
         );
     }
-    console.log("DYNAMIC ROUTE ID:", id);
     return (
         <div className="max-w-6xl mx-auto p-6 bg-[#0f1216] text-white min-h-screen">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -39,23 +38,19 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                     )}
                 </div>
 
-                {/* Right Side: Information & Instructions */}
                 <div className="space-y-6">
-                    {/* Header Details */}
                     <div>
-                        <h1 className="text-3xl font-black uppercase tracking-wider text-white">
+                        <h1 className="font-['Oswald'] text-[36px] font-bold  uppercase tracking-wider text-white">
                             {post.name}
                         </h1>
-                        <p className="text-sm text-gray-400 mt-2 leading-relaxed">
+                        <p className="text-sm text-[#9ca3af] font-sans text-[16px] font-normal mt-2 leading-relaxed">
                             {post.description}
                         </p>
-
-                        {/* Muscle Badges */}
                         <div className="flex flex-wrap gap-2 mt-4">
                             {post.muscleGroups?.map((muscle, index) => (
                                 <span
                                     key={index}
-                                    className="bg-[#cfff04] text-black text-xs font-bold px-3 py-1 rounded-full uppercase"
+                                    className="bg-[#ccff00] text-[#0f1115] font-sans text-[12px] font-semibold px-3 py-1 rounded-full uppercase"
                                 >
                                     {muscle}
                                 </span>
@@ -63,51 +58,50 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
                         </div>
                     </div>
 
-                    {/* Stats Table Section */}
                     <div className="bg-[#181c23] rounded-2xl p-4 border border-gray-800/80 divide-y divide-gray-800/60 text-sm">
                         <div className="flex justify-between py-2">
-                            <span className="text-gray-400 font-semibold uppercase text-xs">Equipment</span>
-                            <span className="font-bold">{post.equipment}</span>
+                            <span className=" uppercase font-sans text-[12px] font-bold text-[#9ca3af]">Equipment</span>
+                            <span className="text-[#e5e7eb] uppercase font-sans text-[14px] font-medium ">{post.equipment}</span>
                         </div>
                         <div className="flex justify-between py-2">
-                            <span className="text-gray-400 font-semibold uppercase text-xs">Difficulty</span>
-                            <span className="font-bold">{post.difficulty}</span>
+                            <span className="uppercase font-sans text-[12px] font-bold text-[#9ca3af]">Difficulty</span>
+                            <span className="text-[#e5e7eb] uppercase font-sans text-[14px] font-medium ">{post.difficulty}</span>
                         </div>
                         <div className="flex justify-between py-2">
-                            <span className="text-gray-400 font-semibold uppercase text-xs">Sets</span>
-                            <span className="font-bold">{post.sets}</span>
+                            <span className="uppercase font-sans text-[12px] font-bold text-[#9ca3af]">Sets</span>
+                            <span className="text-[#e5e7eb] uppercase font-sans text-[14px] font-medium ">{post.sets}</span>
                         </div>
                         <div className="flex justify-between py-2">
-                            <span className="text-gray-400 font-semibold uppercase text-xs">Reps</span>
-                            <span className="font-bold">{post.reps}</span>
+                            <span className="uppercase font-sans text-[12px] font-bold text-[#9ca3af]">Reps</span>
+                            <span className="text-[#e5e7eb] uppercase font-sans text-[14px] font-medium ">{post.reps}</span>
                         </div>
                         <div className="flex justify-between py-2">
-                            <span className="text-gray-400 font-semibold uppercase text-xs">Duration</span>
-                            <span className="font-bold">{post.duration} min</span>
+                            <span className="uppercase font-sans text-[12px] font-bold text-[#9ca3af]">Duration</span>
+                            <span className="text-[#e5e7eb] uppercase font-sans text-[14px] font-medium ">{post.duration} min</span>
                         </div>
                         <div className="flex justify-between py-2">
-                            <span className="text-gray-400 font-semibold uppercase text-xs">Calories</span>
-                            <span className="font-bold">{post.caloriesBurned} kcal</span>
+                            <span className="uppercase font-sans text-[12px] font-bold text-[#9ca3af]">Calories</span>
+                            <span className="text-[#e5e7eb] uppercase font-sans text-[14px] font-medium ">{post.caloriesBurned} kcal</span>
                         </div>
                         <div className="flex justify-between py-2">
-                            <span className="text-gray-400 font-semibold uppercase text-xs">Rating</span>
-                            <span className="font-bold">{post.rating}</span>
+                            <span className="uppercase font-sans text-[12px] font-bold text-[#9ca3af]">Rating</span>
+                            <span className="text-[#e5e7eb] uppercase font-sans text-[14px] font-medium ">{post.rating}</span>
                         </div>
                     </div>
 
                     <div className="space-y-3">
-                        <h3 className="text-lg font-black uppercase tracking-wider text-white">
+                        <h3 className=" uppercase tracking-wider text-white  font-sans text-[16px] font-extrabold ">
                             Instructions
                         </h3>
-                        <ol className="list-decimal list-inside space-y-2 text-sm text-gray-300 leading-relaxed">
+                        <ol className="list-decimal list-inside space-y-2 text-sm text-[#d1d5db] leading-relaxed font-sans text-[14px] font-normal">
                             {post.instructions?.map((step, index) => (
                                 <li key={index} className="pl-1">
-                                    <span className="text-gray-200">{step}</span>
+                                    <span >{step}</span>
                                 </li>
                             ))}
                         </ol>
                     </div>
-
+                    
                     <div className="flex items-center gap-4 pt-2">
                         <Plan post={post} />
                         <Save post={post} />

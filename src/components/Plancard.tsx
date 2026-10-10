@@ -37,25 +37,27 @@ const Plancard = ({ post }: { post: Ipost }) => {
                 </div>
 
                 <div className="flex flex-col gap-1 min-w-0">
-                    <h3 className="text-lg font-black text-white uppercase tracking-wide truncate">
+                    <h3 className="font-['Oswald'] text-[16px] font-bold text-white uppercase tracking-wide truncate">
                         {post.name}
                     </h3>
 
-                    <p className="text-xs text-gray-400 font-medium truncate">
+                    <p className="font-sans text-[12px] font-normal text-[#8a92a0] truncate">
                         {post.equipment}
                     </p>
+
+
                     <div className="flex items-center gap-4 text-xs font-semibold text-gray-300 mt-1">
-                        <span className="flex items-center gap-1.5 text-[#cfff04]">
+                        <span className="flex items-center gap-1.5 text-[#ccff00]">
                             <i className="fa-solid fa-clock"></i>
-                            <span className="text-gray-300">{post.duration} min</span>
+                            <span className="text-[#d1d5db] font-sans text-[12px] font-normal ">{post.duration} min</span>
                         </span>
-                        <span className="flex items-center gap-1.5 text-[#cfff04]">
+                        <span className="flex items-center gap-1.5 text-[#ccff00]">
                             <i className="fa-solid fa-fire"></i>
-                            <span className="text-gray-300">{post.caloriesBurned} kcal</span>
+                            <span className="text-[#d1d5db] font-sans text-[12px] font-normal ">{post.caloriesBurned} kcal</span>
                         </span>
-                        <span className="flex items-center gap-1.5 text-[#cfff04]">
+                        <span className="flex items-center gap-1.5 text-[#ccff00]">
                             <i className="fa-solid fa-star"></i>
-                            <span className="text-gray-300">{post.rating}</span>
+                            <span className="text-[#d1d5db] font-sans text-[12px] font-normal ">{post.rating}</span>
                         </span>
                     </div>
                 </div>
@@ -64,14 +66,15 @@ const Plancard = ({ post }: { post: Ipost }) => {
 
                 <Link
                     href={`/${post.id}`}
-                    className="btn btn-outline btn-sm rounded-full text-xs font-bold text-white normal-case border-gray-700 hover:border-gray-500 hover:bg-transparent"
+                    className="btn btn-outline btn-sm rounded-full font-sans text-[12px] font-normal text-white
+                     normal-case border-gray-700 hover:border-gray-500 hover:bg-transparent"
                 >
                     View Details
                 </Link>
 
                 <button
                     onClick={handle}
-                    className="btn btn-sm rounded-full bg-[#cfff04] hover:bg-[#bce600] text-black border-none text-xs font-extrabold normal-case gap-1.5"
+                    className="btn btn-sm rounded-full bg-[#ccff00] hover:bg-[#bce600] text-black border-none font-sans text-[12px] font-semibold normal-case gap-1.5"
                 >
                     <i className="fa-solid fa-check text-sm"></i>
                     Mark as Done

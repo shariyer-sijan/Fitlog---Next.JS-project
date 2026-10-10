@@ -23,7 +23,7 @@ const Postcard = ({ post }: { post: Ipost }) => {
                     {post.muscleGroups?.map((muscle, index) => (
                         <span
                             key={index}
-                            className="bg-[#cfff04] text-black text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider"
+                            className="bg-[#c2f800] text-black text-xs font-sans text-[11px] font-bold  px-3 py-1 rounded-full uppercase tracking-wider"
                         >
                             {muscle}
                         </span>
@@ -31,28 +31,28 @@ const Postcard = ({ post }: { post: Ipost }) => {
                 </div>
 
                 <div>
-                    <h2 className="text-xl font-black uppercase tracking-wide leading-tight text-white">
+                    <h2 className="font-['Oswald'] text-[18px] font-bold uppercase tracking-wide leading-tight text-white">
                         {post.name}
                     </h2>
-                    <p className="text-xs text-gray-400 mt-1 capitalize font-medium">
+                    <p className=" text-[#9ca3af] font-sans text-[12px] font-normal mt-1 capitalize ">
                         {post.equipment}
                     </p>
                 </div>
 
-                <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
+                <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between  text-[#9ca3af] font-sans text-[12px] font-normal">
               
                     <div className="flex items-center gap-1.5">
-                        <FontAwesomeIcon icon={faClock} className="w-4 h-4 text-gray-400" />
+                        <FontAwesomeIcon icon={faClock} className="w-4 h-4 " />
                         <span>{post.duration} min</span>
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                        <FontAwesomeIcon icon={faFire} className="w-4 h-4 text-gray-400" />
+                        <FontAwesomeIcon icon={faFire} className="w-4 h-4 " />
                         <span>{post.caloriesBurned} kcal</span>
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                        <FontAwesomeIcon icon={faStar} className="w-4 h-4 text-gray-400" />
+                        <FontAwesomeIcon icon={faStar} className="w-4 h-4 " />
                         <span>{post.rating}</span>
                     </div>
                 </div>
