@@ -3,7 +3,8 @@ import Postcard from './Postcard';
 import { Ipost } from './Ipost';
 
 async function call(): Promise<Ipost[]> {
-    const data = await fetch('https://api.abcz.workers.dev/api/fitlog');
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const data = await fetch(`${apiUrl}`);
     return data.json();
 }
 
