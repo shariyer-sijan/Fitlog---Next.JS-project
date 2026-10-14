@@ -34,10 +34,8 @@ const Page = () => {
     const handleSortChange = (newSortBy: 'duration' | 'calories' | 'rating') => {
         setSortBy(newSortBy);
 
-        // Current list clone
         const currentList = Flag ? [...planList] : [...savedList];
 
-        // Array sort
         currentList.sort((a, b) => {
             if (newSortBy === 'duration') return b.duration - a.duration;
             if (newSortBy === 'calories') return b.caloriesBurned - a.caloriesBurned;
@@ -45,7 +43,6 @@ const Page = () => {
             return 0;
         });
 
-        // Direct Context State Update
         if (Flag) {
             setPlanList(currentList);
         } else {
@@ -57,7 +54,7 @@ const Page = () => {
     return (
         <div className="container mx-auto">
             <div className="mb-6">
-                <span className="uppercase tracking-wider font-['Oswald'] text-[30px] font-bold text-white">
+                <span className={"uppercase tracking-wider font-['Oswald'] text-[30px] font-bold text-white"}>
                     MY PLAN
                 </span>
                 <p className="mt-1 text-[#8a92a0] font-sans text-[14px] font-normal">
