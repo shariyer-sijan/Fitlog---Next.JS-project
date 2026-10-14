@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { Ipost } from './Ipost';
-
+import { toast } from 'react-toastify'; 
 const Plan = ({post}:{post:Ipost}) => {
     const context = useContext(Workout);
     if (!context) return null;
@@ -13,6 +13,7 @@ const Plan = ({post}:{post:Ipost}) => {
     const handle = () => {
         if (!ache) {
             setPlanList((prev) => [...prev, post]);
+            toast.success(`${post.name} added to today's plan!`) ;
         }
     }
     

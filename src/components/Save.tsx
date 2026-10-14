@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { Ipost } from './Ipost';
+import { toast } from 'react-toastify'; 
 
 const Save = ({ post }: { post: Ipost }) => {
     const context = useContext(Workout);
@@ -15,6 +16,7 @@ const Save = ({ post }: { post: Ipost }) => {
     const handle = () => {
         if (!ache) {
             setSavedList((prev) => [...prev, post]);
+            toast.info(`${post.name} saved for later!`);
         }
     }
     return (

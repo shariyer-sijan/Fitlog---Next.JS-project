@@ -4,6 +4,7 @@ import { Ipost } from './Ipost';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Workout } from '@/context/Context';
+import { toast } from 'react-toastify';
 
 const Plancard = ({ post }: { post: Ipost }) => {
     const res = useContext(Workout);
@@ -14,6 +15,8 @@ const Plancard = ({ post }: { post: Ipost }) => {
     const handle = () => {
         const data = savedList.filter((item) => item.id != post.id);
         setSavedList(data);
+
+        toast.warn(`${post.name} Deleted !`);
     }
 
     return (

@@ -4,6 +4,7 @@ import { Ipost } from './Ipost';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Workout } from '@/context/Context';
+import { toast } from 'react-toastify';
 
 const Plancard = ({ post }: { post: Ipost }) => {
     const res = useContext(Workout);
@@ -14,6 +15,12 @@ const Plancard = ({ post }: { post: Ipost }) => {
     const handle = () => {
         const data = planList.filter((item) => item.id != post.id);
         setPlanList(data);
+        toast.success(`${post.name} Done !`);
+    }
+     const handleD = () => {
+        const data = planList.filter((item) => item.id != post.id);
+        setPlanList(data);
+        toast.warn(`${post.name} Deleted !`);
     }
     return (
         <div className="bg-[#12161f] border border-gray-800/80 rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-gray-700/80 transition duration-200">
@@ -70,13 +77,14 @@ const Plancard = ({ post }: { post: Ipost }) => {
                 <button
                     onClick={handle}
                     className="btn btn-xs sm:btn-sm rounded-full bg-[#ccff00] hover:bg-[#bce600] text-black border-none font-sans text-[11px] sm:text-[12px] font-semibold normal-case gap-1"
-                >
+                    
+               >
                     <i className="fa-solid fa-check text-xs"></i>
                     Mark as Done
                 </button>
 
                 <button
-                    onClick={handle}
+                    onClick={handleD}
                     className="btn btn-ghost btn-xs sm:btn-sm btn-circle text-gray-400 hover:text-white hover:bg-gray-800/50"
                     title="Remove"
                 >

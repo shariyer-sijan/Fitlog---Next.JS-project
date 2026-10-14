@@ -9,6 +9,11 @@ config.autoAddCss = false;
 
 import "./globals.css";
 import Ft from "@/components/Ft";
+
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,9 +40,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Context>
           <Navbar />
           <div className="divider"></div>
-          {children}</Context>
-          <Ft/>
-          </body>
+          {children} <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            theme="dark"
+          /></Context>
+        <Ft />
+      </body>
     </html>
   );
 }
